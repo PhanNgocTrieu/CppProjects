@@ -3,17 +3,20 @@
 
 #include "cgpaInfor.h"
 #include "cgpaCalculator.h"
+#include <fstream>
 
 namespace tpn {
     class FunctionalController {
         public:
-            FunctionalController();
+            static FunctionalController* getIntance();
             ~FunctionalController();
+            void addCreditFromFile(const std::string& file_path);
             void addCreditInfor(int creHour, const std::string& gradeTxt);
             void showCredit();
             CGPA_CALCULATOR::GPA getCGPAResult();
 
         private:
+            FunctionalController();
             CGPA_CALCULATOR* m_calculator = nullptr; 
             CGPA_INFO m_info; 
     };

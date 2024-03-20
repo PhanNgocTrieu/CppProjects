@@ -27,11 +27,16 @@ namespace tpn {
             {"NC", -1},
             {"P",  -1},
         };
-        CreditInfor _info = {
-            .creditHours = creHour,
-            .gradeTxt = gradeTxtMap[gradeTxt]
-        };
-        m_gpaInfors.push_back(_info);
+
+        if (gradeTxtMap.find(gradeTxt) != gradeTxtMap.end()) {
+            CreditInfor _info = {
+                .creditHours = creHour,
+                .gradeTxt = gradeTxtMap[gradeTxt]
+            };
+            m_gpaInfors.push_back(_info);
+        } else {
+            std::cout << "could not find the key in map with " << gradeTxt << std::endl;
+        }
     }
 
     void CGPA_INFO::removeCredit(int index) {
